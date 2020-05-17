@@ -53,6 +53,7 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem 'rails_db'
   gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
