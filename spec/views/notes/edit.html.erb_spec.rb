@@ -5,7 +5,6 @@ RSpec.describe "notes/edit", type: :view do
     @note = assign(:note, Note.create!(
       title: "MyString",
       description: "MyString",
-      user: ""
     ))
   end
 
@@ -18,7 +17,6 @@ RSpec.describe "notes/edit", type: :view do
 
       assert_select "input[name=?]", "note[description]"
 
-      assert_select "input[name=?]", "note[user]"
     end
   end
 end

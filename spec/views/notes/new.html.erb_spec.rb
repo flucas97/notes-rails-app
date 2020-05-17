@@ -5,7 +5,6 @@ RSpec.describe "notes/new", type: :view do
     assign(:note, Note.new(
       title: "MyString",
       description: "MyString",
-      user: ""
     ))
   end
 
@@ -18,7 +17,6 @@ RSpec.describe "notes/new", type: :view do
 
       assert_select "input[name=?]", "note[description]"
 
-      assert_select "input[name=?]", "note[user]"
     end
   end
 end

@@ -5,7 +5,6 @@ RSpec.describe "notes/show", type: :view do
     @note = assign(:note, Note.create!(
       title: "Title",
       description: "Description",
-      user: ""
     ))
   end
 
@@ -13,6 +12,5 @@ RSpec.describe "notes/show", type: :view do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/Description/)
-    expect(rendered).to match(//)
   end
 end
