@@ -1,15 +1,21 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_user
+  before_action :authenticate_user!
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.all.where(user_id: current_user)
   end
 
   # GET /notes/1
   # GET /notes/1.json
   def show
+    if @note.user_id != @user.id
+      redirect_to notes_path, notice: 'Note not found' 
+    else
+      @note
+    end
   end
 
   # GET /notes/new
@@ -24,8 +30,9 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
-
+    @note = Note.new(note_params)  
+    @note.user_id = current_user.id
+    
     respond_to do |format|
       if @note.save
         format.html { redirect_to @note, notice: 'Note was successfully created.' }
@@ -67,8 +74,12 @@ class NotesController < ApplicationController
       @note = Note.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :description, :user)
+      params.require(:note).permit(:title, :description)
     end
 end
