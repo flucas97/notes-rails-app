@@ -1,21 +1,17 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_users_notes, only: [:index]
+  before_action :validate_user_note, only: [:show, :edit]
   before_action :set_user
   before_action :authenticate_user!
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all.where(user_id: current_user)
   end
 
   # GET /notes/1
   # GET /notes/1.json
   def show
-    if @note.user_id != @user.id
-      redirect_to notes_path, notice: 'Note not found' 
-    else
-      @note
-    end
   end
 
   # GET /notes/new
@@ -78,8 +74,20 @@ class NotesController < ApplicationController
       @user = current_user
     end
 
+    def set_users_notes
+      @notes = Note.all.where(user_id: current_user)
+    end
     # Only allow a list of trusted parameters through.
     def note_params
       params.require(:note).permit(:title, :description)
+    end
+
+    def validate_user_note
+      set_user
+      if @note.user_id != @user.id
+        redirect_to notes_path, notice: 'Note not found' 
+      else
+        @note
+      end
     end
 end
