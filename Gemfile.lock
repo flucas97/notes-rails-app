@@ -289,7 +289,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  factory_bot_rails (~> 4.0)
+  factory_bot_rails
   faker
   httparty
   jbuilder (~> 2.5)
