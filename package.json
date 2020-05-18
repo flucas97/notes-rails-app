@@ -1,5 +1,15 @@
 {
   "name": "NotesApp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "notify-js-legacy": "^0.4.1",
+    "popper.js": "^1.16.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:flucas97/notes-ruby-app.git",
+  "author": "flucas97 <feijolucas1997@gmail.com>",
+  "license": "MIT"
 }
