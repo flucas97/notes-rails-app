@@ -2,10 +2,8 @@ class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_action :set_users_notes, only: [:index]
   before_action :validate_user_note, only: [:show, :edit]
-  before_action :set_user
   before_action :authenticate_user!
-  # GET /notes
-  # GET /notes.json
+
   def index
   end
 
@@ -54,8 +52,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
     @note.destroy
     respond_to do |format|
@@ -70,10 +66,6 @@ class NotesController < ApplicationController
       @note = Note.find(params[:id])
     end
 
-    def set_user
-      @user = current_user
-    end
-
     def set_users_notes
       @notes = Note.all.where(user_id: current_user)
     end
@@ -83,11 +75,6 @@ class NotesController < ApplicationController
     end
 
     def validate_user_note
-      set_user
-      if @note.user_id != @user.id
-        redirect_to notes_path, notice: 'Note not found' 
-      else
-        @note
-      end
+      redirect_to notes_path, notice: 'Note not found' unless @note.user_id == current_user.id
     end
 end

@@ -6,10 +6,12 @@ RSpec.describe "notes/index", type: :view do
       Note.create!(
         title: "Title",
         description: "Description",
+        user_id: "1"
       ),
       Note.create!(
         title: "Title",
         description: "Description",
+        user_id: "1"
       )
     ])
   end

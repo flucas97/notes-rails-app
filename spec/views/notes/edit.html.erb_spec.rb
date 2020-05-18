@@ -5,6 +5,7 @@ RSpec.describe "notes/edit", type: :view do
     @note = assign(:note, Note.create!(
       title: "MyString",
       description: "MyString",
+      user_id: '1'
     ))
   end
 
