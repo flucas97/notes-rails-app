@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  layout 'notes'
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_action :set_users_notes, only: [:index]
   before_action :validate_user_note, only: [:show, :edit]
