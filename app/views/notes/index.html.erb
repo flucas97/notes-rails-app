@@ -1,19 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-  <div class="w-100">
-    <h2 class="mb-5"> Minhas notas </h2>
-    <% @notes.each do |note| %>
-      <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-        <div class="resume-content">
-          <h3 class="mb-0"><%= note.title %> </h3>
-          <div> <%= note.description %> </div>
+<div class="container-fluid p-0">
+  <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+    <div class="w-100">
+      <h2 class="mb-5"> Minhas notas </h2>
+      <% @notes.each do |note| %>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+          <div class="resume-content">
+            <h3 class="mb-0"><%= note.title %> </h3>
+            <div> <%= note.description %> </div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"> dd/mm/yyyy </span> <br />
+            <span class="text-primary"><%= link_to 'Show', note %>
+          <span class="text-primary"><%= link_to 'Edit', edit_note_path(note) %></span>
+            <span class="text-primary"><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </div>
         </div>
-        <div class="resume-date text-md-right">
-          <span class="text-primary"> DATA </span>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</section>
-<%= link_to 'New Note', new_note_path %>
+        <hr class="m-0"> <br />
+      <% end %>
+    </div>
+  </section>
+  <section class="p-sm-5 d-flex align-items-center">
+      <div class="subheading mb-3"> <%= link_to 'New Note', new_note_path %> </div>
+  </section>
+</div>
