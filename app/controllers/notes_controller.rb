@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   layout 'notes'
+
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_action :set_users_notes, only: [:index]
   before_action :validate_user_note, only: [:show, :edit]
@@ -54,6 +55,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    sleep 15
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }

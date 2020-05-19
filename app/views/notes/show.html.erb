@@ -1,16 +1,28 @@
 <p id="notice"> <%= notice %></p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= @note.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @note.description %>
-  </p>
-
-  <p>
-
-  <%= link_to 'Edit', edit_note_path(@note) %> |
-  <%= link_to 'Back', notes_path %>
+<div class="container">
+<div class="row">
+<div class="container-fluid px-sm-5">
+  <section class="resume-section p-lg-5 d-flex align-items-center" id="note">
+    <div class="w-100">
+      <div class="header-title"><h2 class="mb-5"> NOTA <%= @note.id%> </h2></div>
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between p-3 p-lg-5 shadow p-3 mb-5 rounded" style="background-color: #FFD700; height: 40em">
+          <div class="resume-content">
+            <h3 class="mb-0"><%= @note.title %> </h3> <br />
+            <div> <%= @note.description %> </div>
+          </div>
+          <div class="resume-date text-md-right">
+            <span class="text-primary"> dd/mm/yyyy </span> <br />
+            <span class="text-primary"><%= link_to 'Show', @note %> <br />
+          <span class="text-primary"><%= link_to 'Edit', edit_note_path(@note) %></span> <br />
+            <span class="text-primary"><%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %></span> <br />
+          </div>
+        </div>
+        <hr class="m-0"> <br />
+    </div>
+  </section>
+  <section class="p-sm-5 d-flex align-items-center">
+      <div class="new-note-btn btn btn-warning"> <%= link_to 'Voltar', notes_path %> </div>
+  </section>
+</div>
+</div>
+</div>
