@@ -36,6 +36,9 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#experience">Configurações</a>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "nav-link js-scroll-trigger"%>
+        </li>
       </ul>
     </div>
   </nav>
