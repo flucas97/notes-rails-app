@@ -15,6 +15,5 @@ Rails.application.config.assets.precompile += %w( notes.js notes.css
                                                     )
 
 # /lib/assets
-Rails.application.config.assets.precompile += %w( style.css main.js 
-                                                    custom.css custom.js )
+Rails.application.config.assets.precompile += %w( resume.css resume.js )
 

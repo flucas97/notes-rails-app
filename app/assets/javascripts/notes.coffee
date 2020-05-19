@@ -9,5 +9,5 @@
 //= require notify-js-legacy/notify
 //= require popper.js/dist/popper.js
 //= require bootstrap/dist/js/bootstrap
-//= require custom
 //= require fastclick
+//= require resume
