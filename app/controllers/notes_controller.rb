@@ -55,7 +55,11 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    DeleteNoteJob.perform_now
+    DeleteNoteJob.perform_later(@note)
+    respond_to do |format|
+      format.html { redirect_to notes_url, notice: 'Sua nota será deletada em breve!' }
+      format.json { head :no_content }
+    end
   end
 
   private
