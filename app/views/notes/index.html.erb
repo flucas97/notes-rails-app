@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
-<div class="container-fluid p-0">
-  <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
+<div class="container">
+<div class="row">
+<div class="container-fluid px-sm-5">
+  <section class="resume-section p-lg-5 d-flex align-items-center" id="note">
     <div class="w-100">
-      <h2 class="mb-5"> Minhas notas </h2>
+      <div class="header-title"><h2 class="mb-5"> Minhas notas </h2></div>
       <% @notes.each do |note| %>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+        <div class="resume-item d-flex flex-column flex-md-row justify-content-between p-3 p-lg-5 shadow p-3 mb-5 rounded" style="background-color: #FFD700;">
           <div class="resume-content">
             <h3 class="mb-0"><%= note.title %> </h3>
             <div> <%= note.description %> </div>
@@ -21,6 +23,8 @@
     </div>
   </section>
   <section class="p-sm-5 d-flex align-items-center">
-      <div class="subheading mb-3"> <%= link_to 'New Note', new_note_path %> </div>
+      <div class="subheading new-note-btn"> <%= link_to 'Nova Nota', new_note_path %> </div>
   </section>
+</div>
+</div>
 </div>

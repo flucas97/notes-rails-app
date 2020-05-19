@@ -26,7 +26,7 @@ h6 {
   font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-weight: 700;
   text-transform: uppercase;
-  color: #343a40;
+  color: #FFFFF0;
 }
 
 h1 {
@@ -36,6 +36,7 @@ h1 {
 
 h2 {
   font-size: 3.5rem;
+  color: #868e96;
 }
 
 h3 {
@@ -160,17 +161,33 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #BD5D38 !important;
+  background-color: #6495ED !important;
 }
 
 .text-primary {
-  color: #BD5D38 !important;
+  color: #FFFFF0!important;
 }
 
 a {
-  color: #BD5D38;
+  color: #FFFFF0;
+}
+
+.new-note-btn {
+  color: #FFFFF0!important;
+  background-color: #6495ED;
+  border-radius: 10px;
+  width: 8em;
+  height: 20%;
+  margin-top: -15%;
+  text-align: center;
+}
+
+.header-title {
+  width: auto;
+  height: 20%;
+  margin-top: -5%;
 }
 
 a:hover, a:focus, a:active {
-  color: #824027;
+  color: #FFFFF0;
 }
