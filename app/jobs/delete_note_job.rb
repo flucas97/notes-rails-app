@@ -1,5 +1,4 @@
 class DeleteNoteJob < ApplicationJob
-  include ActionController::MimeResponds
   queue_as :delete_note
 
   def perform(note)
