@@ -16,6 +16,9 @@ if value is of type hash -> HGETALL <key>
 if value is of type lists -> lrange <key> <start> <end>
 if value is of type sets -> smembers <key>
 if value is of type sorted sets -> ZRANGEBYSCORE <key> <min> <max>
+
+SCARD key
+Returns the set cardinality (number of elements) of the set stored at
 ```
   
 Redis + Rails + Sidekiq -> https://www.youtube.com/watch?v=bu7A0hYy2No
