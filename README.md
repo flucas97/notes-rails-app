@@ -32,3 +32,9 @@ https://github.com/mperham/sidekiq/wiki/Using-Redis
 
 ### Error handling Sidekiq
 https://github.com/mperham/sidekiq/wiki/Error-Handling
+
+### Designing job queue in Redis
+https://kirshatrov.com/2018/07/20/redis-job-queue/
+
+### Manage Lists in Redis
+https://www.digitalocean.com/community/cheatsheets/how-to-manage-lists-in-redis
