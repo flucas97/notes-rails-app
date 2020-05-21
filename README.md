@@ -21,8 +21,14 @@ SCARD key
 Returns the set cardinality (number of elements) of the set stored at
 ```
   
-Redis + Rails + Sidekiq -> https://www.youtube.com/watch?v=bu7A0hYy2No
+###Redis + Rails + Sidekiq 
+https://www.youtube.com/watch?v=bu7A0hYy2No
 
-Best pratices with Sidekiq https://github.com/mperham/sidekiq/wiki/Best-Practices#3-embrace-concurrency
-Using Redis with Sidekiq https://github.com/mperham/sidekiq/wiki/Using-Redis
-Error handling Sidekiq https://github.com/mperham/sidekiq/wiki/Error-Handling
+###Best pratices with Sidekiq
+https://github.com/mperham/sidekiq/wiki/Best-Practices#3-embrace-concurrency
+
+###Using Redis with Sidekiq
+https://github.com/mperham/sidekiq/wiki/Using-Redis
+
+###Error handling Sidekiq
+https://github.com/mperham/sidekiq/wiki/Error-Handling
