@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   layout 'notes'
 
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update]
   before_action :set_users_notes, only: [:index]
   before_action :validate_user_note, only: [:show, :edit]
   before_action :authenticate_user!
@@ -55,7 +55,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    DeleteNoteJob.perform_later(@note)
+    DeleteNoteJob.perform_later(params[:id])
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Sua nota será deletada em breve!' }
       format.json { head :no_content }
