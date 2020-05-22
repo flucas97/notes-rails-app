@@ -1,24 +1,40 @@
-# README
+### Manage a Queue from redis-cli
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+redis-cli
 
-Things you may want to cover:
+```
+select 0 # (or whichever namespace Sidekiq is using)
+keys * # (just to get an idea of what you're working with)
+smembers queues
+lrange queue:queue_name 0 -1 # (queue_name must be your relevant queue)
+lrem queue:queue_name -1 "payload"
+```
+### Redis
+```
+if value is of type string -> GET <key>
+if value is of type hash -> HGETALL <key>
+if value is of type lists -> lrange <key> <start> <end>
+if value is of type sets -> smembers <key>
+if value is of type sorted sets -> ZRANGEBYSCORE <key> <min> <max>
 
-* Ruby version
+SCARD key
+Returns the set cardinality (number of elements) of the set stored at
+```
+  
+### Redis + Rails + Sidekiq 
+https://www.youtube.com/watch?v=bu7A0hYy2No
 
-* System dependencies
+### Best pratices with Sidekiq
+https://github.com/mperham/sidekiq/wiki/Best-Practices#3-embrace-concurrency
 
-* Configuration
+### Using Redis with Sidekiq
+https://github.com/mperham/sidekiq/wiki/Using-Redis
 
-* Database creation
+### Error handling Sidekiq
+https://github.com/mperham/sidekiq/wiki/Error-Handling
 
-* Database initialization
+### Designing job queue in Redis
+https://kirshatrov.com/2018/07/20/redis-job-queue/
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Manage Lists in Redis
+https://www.digitalocean.com/community/cheatsheets/how-to-manage-lists-in-redis
