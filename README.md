@@ -38,3 +38,10 @@ https://kirshatrov.com/2018/07/20/redis-job-queue/
 
 ### Manage Lists in Redis
 https://www.digitalocean.com/community/cheatsheets/how-to-manage-lists-in-redis
+
+initializers/redis.rb
+$redis = Redis.new(host: 'localhost', port: 6379)
+
+lrange queue:delete_note 0 -1
+llen queue:delete_note
+
