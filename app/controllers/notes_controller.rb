@@ -21,7 +21,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)  
-    @note.user_id = current_user.id
+    set_note_owner(@note)
     
     respond_to do |format|
       if @note.save
@@ -69,9 +69,12 @@ class NotesController < ApplicationController
       begin
         @note = Note.find(params[:id])
       rescue => err
-       flash[:danger] = "Nota #{params[:id]} não encontrada."
-       redirect_to notes_path
+        invalidate_note
       end
+    end
+
+    def set_note_owner(note)
+      note.user_id = current_user.id
     end
 
     def set_users_notes
@@ -84,8 +87,14 @@ class NotesController < ApplicationController
 
     def validate_user_note
       unless @note.user_id == current_user.id
-         flash[:danger] = "Nota não encontrada."
-         redirect_to notes_path
+        invalidate_note
       end
+    end
+
+    private 
+
+    def invalidate_note
+      flash[:danger] = "Nota #{params[:id]} não encontrada."
+      redirect_to notes_path
     end
 end
