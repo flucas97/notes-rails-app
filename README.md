@@ -42,6 +42,23 @@ https://www.digitalocean.com/community/cheatsheets/how-to-manage-lists-in-redis
 initializers/redis.rb
 $redis = Redis.new(host: 'localhost', port: 6379)
 
+### Rails console
+$redis.LLEN("queue:delete_note")
+set = $redis.lrange("queue:delete_note", 0, -1)
+set.map{|q| JSON.parse(q)["args"].first["arguments"]}
+
+define a scape queue
+q2 = set
+
+### Dequeue
+$redis.lpop("queue:delete_note")
+
+### Enqueue to scape queue
+$redis.rpush("queue:scape_delete_note", q2)
+
+bundle exec sidekiq -q scape_delete_note -c 1
+
+### Redis client
 lrange queue:delete_note 0 -1
 llen queue:delete_note
 
