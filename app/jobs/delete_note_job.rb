@@ -3,12 +3,14 @@ class DeleteNoteJob < ApplicationJob
 
   def perform(note_id)
     begin 
+      sleep 25
       note = Note.find(note_id)
       note.destroy
+      #logger.debug "Inside of destroy"
     rescue => err
-      # logar o erro
+      #logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>> #{err}")
     else
-      # logar a ação 
+      # logar o sucesso 
     end
   end
 end

@@ -65,36 +65,41 @@ class NotesController < ApplicationController
   end
 
   private
-    def set_note
-      begin
-        @note = Note.find(params[:id])
-      rescue => err
-        invalidate_note
-      end
-    end
+  
+  # Note params
 
-    def set_note_owner(note)
-      note.user_id = current_user.id
-    end
+  def note_params
+    params.require(:note).permit(:title, :description)
+  end
 
-    def set_users_notes
-      @notes = Note.all.where(user_id: current_user)
-    end
+  # Sets
 
-    def note_params
-      params.require(:note).permit(:title, :description)
+  def set_note
+    begin
+      @note = Note.find(params[:id])
+    rescue => err
+      invalidate_note
     end
+  end
 
-    def validate_user_note
-      unless @note.user_id == current_user.id
-        invalidate_note
-      end
+  def set_note_owner(note)
+    note.user_id = current_user.id
+  end
+
+  def set_users_notes
+    @notes = Note.all.where(user_id: current_user)
+  end
+
+  # Routes
+
+  def validate_user_note
+    unless @note.user_id == current_user.id
+      invalidate_note
     end
+  end
 
-    private 
-
-    def invalidate_note
-      flash[:danger] = "Nota #{params[:id]} não encontrada."
-      redirect_to notes_path
-    end
+  def invalidate_note
+    flash[:danger] = "Nota #{params[:id]} não encontrada."
+    redirect_to notes_path
+  end
 end
