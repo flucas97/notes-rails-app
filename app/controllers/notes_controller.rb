@@ -9,22 +9,16 @@ class NotesController < ApplicationController
   def index
   end
 
-  # GET /notes/1
-  # GET /notes/1.json
   def show
   end
 
-  # GET /notes/new
   def new
     @note = Note.new
   end
 
-  # GET /notes/1/edit
   def edit
   end
 
-  # POST /notes
-  # POST /notes.json
   def create
     @note = Note.new(note_params)  
     @note.user_id = current_user.id
@@ -43,8 +37,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /notes/1
-  # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
       if @note.update(note_params)
@@ -73,7 +65,6 @@ class NotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_note
       begin
         @note = Note.find(params[:id])
@@ -86,7 +77,7 @@ class NotesController < ApplicationController
     def set_users_notes
       @notes = Note.all.where(user_id: current_user)
     end
-    # Only allow a list of trusted parameters through.
+
     def note_params
       params.require(:note).permit(:title, :description)
     end
